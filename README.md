@@ -1,3 +1,3 @@
 # preactStore
 
-Example commerce store UI leveraging preac-cli and graphql-faker.
+Example commerce store UI leveraging preact-cli and graphql-faker.
