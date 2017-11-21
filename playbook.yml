@@ -1,0 +1,56 @@
+---
+- hosts: all
+  vars:
+
+  tasks:
+    - name: Ensure the system can use the HTTPS transport for APT
+      stat:
+        path: /usr/lib/apt/methods/https
+      register: apt_https_transport
+    - name: Install HTTPS transport for APT
+      apt:
+        pkg: apt-transport-https
+        state: installed
+      when: not apt_https_transport.stat.exists
+    - name: Import the NodeSource GPG key into apt
+      become: yes
+      apt_key:
+        url: https://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0x1655A0AB68576280
+        id: "68576280"
+        state: present
+    - name: Add NodeSource deb repository
+      become: yes
+      apt_repository:
+        repo: 'deb https://deb.nodesource.com/node_8.x {{ ansible_distribution_release }} main'
+        state: present
+    - name: Add NodeSource deb-src repository
+      become: yes
+      apt_repository:
+        repo: 'deb-src https://deb.nodesource.com/node_8.x {{ ansible_distribution_release }} main'
+        state: present
+    - name: Install Node.js
+      become: yes
+      apt:
+        pkg:
+          - nodejs
+        state: installed
+        update_cache: yes
+    - name: Create alternative npm global directory
+      file:
+        path: ~/.npm-global
+        state: directory
+        mode: 0755
+    - name: Move global node modules dir to avoid permissions issues
+      shell: "{{item}}"
+      with_items:
+        - npm config set prefix '~/.npm-global'
+        - export PATH=~/.npm-global/bin:$PATH        
+        - . ~/.profile
+  handlers:
+
+
+
+
+
+
+
