@@ -13,3 +13,6 @@
   ```
 
 Updates saved via the editor will modify the `schema.faker.graphql` file. Commit/push these changes to share them.
+
+Alternatively it is possible to start the instance as a Docker container, but it would need to be run on a different port, because 9002 is allocated to the VM instance (for the GraphQL instance).
+This would also require a change to the webStore configuration to point it at the correct port or a change to the vagrantfile so that the VM no longer claims the port.
