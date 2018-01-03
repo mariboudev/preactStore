@@ -2,7 +2,7 @@
 
 Example commerce store UI leveraging preact-cli and graphql-faker.
 
-##Prerequisites
+## Prerequisites
 
 You will need the following installed on your host machine:
 * git
