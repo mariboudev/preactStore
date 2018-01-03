@@ -17,3 +17,4 @@ Example commerce store UI leveraging preact-cli and graphql-faker.
 4. Move into PWA directory to start serving the app
   * ```cd webStore```
 5. Start up the dev server or build for prod using the [npm controls](webStore/README.md "npm commands")
+6. [Start up the GraphQL server](graphql/README.md)
