@@ -23,6 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network "forwarded_port", guest: 8080, host: 8080
   config.vm.network "forwarded_port", guest: 56895, host: 56895
+  config.vm.network "forwarded_port", guest: 9002, host: 9002 # Open up graphql-faker port
   # config.vm.network "forwarded_port", guest: 3000, host: 3000
 
 
@@ -53,7 +54,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
    config.vm.provider "virtualbox" do |vb|
   #   # Don't boot with headless mode
      vb.gui = true
-     vb.name = "preactExperiments"
+     vb.name = "preactStore"
   #
   #   # Use VBoxManage to customize the VM. For example to change memory:
      vb.customize ["modifyvm", :id, "--memory", "3072"]

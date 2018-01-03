@@ -1,6 +1,7 @@
 ---
 - hosts: all
   vars:
+    extra_path: ~/.npm-global/bin
 
   tasks:
     - name: Ensure the system can use the HTTPS transport for APT
@@ -28,6 +29,13 @@
       apt_repository:
         repo: 'deb-src https://deb.nodesource.com/node_8.x {{ ansible_distribution_release }} main'
         state: present
+    - name: Install git
+      become: yes
+      apt:
+        pkg:
+          - git
+        state: installed
+        update_cache: yes
     - name: Install Node.js
       become: yes
       apt:
@@ -46,11 +54,20 @@
         - npm config set prefix '~/.npm-global'
         - export PATH=~/.npm-global/bin:$PATH        
         - . ~/.profile
+    - name: install graphql-faker
+      npm:
+        name: graphql-faker
+        global: yes
+    - name: Add {{extra_path}} to the PATH in /etc/environmentpw
+      become: yes
+      lineinfile: >
+        dest=/etc/environment
+        state=present
+        backrefs=yes
+        regexp='PATH=(["]*)((?!.*?{{extra_path}}).*?)(["]*)$'
+        line="PATH=\1\2:{{extra_path}}\3"
+    - name: NPM install preact-cli package globally
+      npm:
+        name: preact-cli
+        global: yes
   handlers:
-
-
-
-
-
-
-
