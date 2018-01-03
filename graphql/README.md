@@ -11,3 +11,5 @@
   ❯ Interactive Editor:	 http://localhost:9002/editor
   ❯ GraphQL API:	 http://localhost:9002/graphql
   ```
+
+Updates saved via the editor will modify the `schema.faker.graphql` file. Commit/push these changes to share them.
