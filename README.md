@@ -2,17 +2,18 @@
 
 Example commerce store UI leveraging preact-cli and graphql-faker.
 
-Prerequisites: git and Virtualbox and Vagrant installed on host
+**Prerequisites: git and Virtualbox and Vagrant installed on host**
 
-Getting Started
+## Getting Started
 
-Get the code
-`git clone https://github.com/mariboudev/preactStore.git`
-Create the VM with node, npm, preact-cli and graphql-faker installed
-`vagrant up`
-SSH into the VM and install the dependencies
-`vagrant ssh`
-`cd /vagrant/webStore`
-`npm install`
-Start up the dev server or build for prod using the npm commands in the webStore PWA
-`cd webStore`
+1. Get the code
+  * `git clone https://github.com/mariboudev/preactStore.git`
+2. Create the VM with node, npm, preact-cli and graphql-faker installed
+  * ```vagrant up```
+3. SSH into the VM and install the dependencies
+  * ```vagrant ssh```
+  * ```cd /vagrant/webStore```
+  * ```npm install```
+4. Move into PWA directory to start serving the app
+  * ```cd webStore```
+5. Start up the dev server or build for prod using the [npm controls](webStore/README.md "npm commands")
