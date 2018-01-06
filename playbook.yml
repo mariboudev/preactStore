@@ -58,7 +58,7 @@
       npm:
         name: graphql-faker
         global: yes
-    - name: Add {{extra_path}} to the PATH in /etc/environmentpw
+    - name: Add {{extra_path}} to the PATH in /etc/environment
       become: yes
       lineinfile: >
         dest=/etc/environment
