@@ -62,3 +62,7 @@ playbook.retry
 
 # Vagrant files
 .vagrant/
+
+# DCStore
+.DS_Store
+
